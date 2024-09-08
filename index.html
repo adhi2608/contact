@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <style>
+        body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+.contact-form {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 13px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Contact List */
+.contact-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-list li {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-list li:hover {
+    background-color: #e9ecef;
+}
+
+.edit-btn, .delete-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    color: #0056b3;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+.delete-btn:hover {
+    color: #c82333;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact List</h1>
+    
+        <form action="/add" method="post" class="contact-form">
+            <label for="name">Name</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter Name" required><br><br>
+            
+            <label for="number">Phone Number</label><br>
+            <input type="text" id="number" name="number" placeholder="Enter Phone Number" required><br><br>
+            
+            <button type="submit">Add Contact</button>
+        </form>
+
+    <h2>Contacts</h2>
+    <ul class="contact-list">
+        {% for contact in contacts %}
+        <li>
+            {{ contact.name }}: {{ contact.number }}
+            <a href="/edit/{{ loop.index0 }}">Edit</a>
+            <a href="/delete/{{ loop.index0 }}">Delete</a>
+        </li>
+        {% else %}
+        <li>No contacts found</li>
+        {% endfor %}
+     </ul>
+    </div>
+</body>
+</html>

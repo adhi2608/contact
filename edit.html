@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Contact</title>
+    <style>
+         body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+         }
+         h1{
+            color: #333;
+            text-align: center;
+         }
+         .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Edit Contact</h1>
+    
+    <form action="/edit/{{ contact_id }}" method="post">
+        <label for="name">Name</label><br>
+        <input type="text" name="name" value="{{ contact.name }}" required><br><br>
+        <label for="number">Phone Number</label><br>
+        <input type="text" name="number" value="{{ contact.number }}" required><br><br>
+        <button type="submit">Save</button>
+    </form><br>
+
+    <a href="/">Back to Contact List</a>
+</div>
+</body>
+</html>
